@@ -1,1 +1,5 @@
-
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GreenBarBot</string>
+    <string name="accessibility_desc">GreenBarBot 使用辅助功能自动执行屏幕点击，用于游戏辅助</string>
+</resources>
