@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- ══ Header ════════════════════════════════════════════════════════ -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🎯 GreenBarBot"
+            android:textColor="#00E676"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:paddingBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="已停止"
+            android:textColor="#B0BEC5"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:paddingBottom="12dp"/>
+
+        <!-- ══ Master Switch ══════════════════════════════════════════════════ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="8dp"
+            android:background="#1E1E1E"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="一键启动"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:gravity="center_vertical"/>
+
+            <Switch
+                android:id="@+id/sw_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:thumbTint="#00E676"
+                android:trackTint="#37474F"/>
+        </LinearLayout>
+
+        <!-- ══ Scene Buttons ═════════════════════════════════════════════════ -->
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="场景切换" android:textColor="#90CAF9" android:textSize="16sp"
+            android:paddingBottom="6dp"/>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:weightSum="3" android:layout_marginBottom="12dp">
+
+            <Button android:id="@+id/btn_scene1" android:layout_width="0dp"
+                android:layout_weight="1" android:layout_height="wrap_content"
+                android:text="场景1" android:backgroundTint="#1565C0" android:textColor="#fff"
+                android:layout_marginEnd="4dp"/>
+            <Button android:id="@+id/btn_scene2" android:layout_width="0dp"
+                android:layout_weight="1" android:layout_height="wrap_content"
+                android:text="场景2" android:backgroundTint="#1565C0" android:textColor="#fff"
+                android:layout_marginEnd="4dp"/>
+            <Button android:id="@+id/btn_scene3" android:layout_width="0dp"
+                android:layout_weight="1" android:layout_height="wrap_content"
+                android:text="场景3" android:backgroundTint="#1565C0" android:textColor="#fff"/>
+        </LinearLayout>
+
+        <!-- ══ HSV Tuning ═════════════════════════════════════════════════════ -->
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="绿条 HSV 阈值调节" android:textColor="#A5D6A7" android:textSize="16sp"
+            android:paddingBottom="6dp"/>
+
+        <!-- Hue Min -->
+        <TextView android:id="@+id/tv_hue_min" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:textColor="#CFD8DC" android:text="绿色Hue最小值: 35"/>
+        <SeekBar android:id="@+id/sb_hue_min" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:progress="35"/>
+
+        <!-- Hue Max -->
+        <TextView android:id="@+id/tv_hue_max" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:textColor="#CFD8DC" android:text="绿色Hue最大值: 85"/>
+        <SeekBar android:id="@+id/sb_hue_max" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:progress="85"/>
+
+        <!-- Sat Min -->
+        <TextView android:id="@+id/tv_sat_min" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:textColor="#CFD8DC" android:text="饱和度最小值: 80"/>
+        <SeekBar android:id="@+id/sb_sat_min" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:progress="80"/>
+
+        <!-- Sat Max -->
+        <TextView android:id="@+id/tv_sat_max" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:textColor="#CFD8DC" android:text="饱和度最大值: 255"/>
+        <SeekBar android:id="@+id/sb_sat_max" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:progress="255"/>
+
+        <!-- Val Min -->
+        <TextView android:id="@+id/tv_val_min" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:textColor="#CFD8DC" android:text="亮度最小值: 80"/>
+        <SeekBar android:id="@+id/sb_val_min" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:progress="80"/>
+
+        <!-- Val Max -->
+        <TextView android:id="@+id/tv_val_max" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:textColor="#CFD8DC" android:text="亮度最大值: 255"/>
+        <SeekBar android:id="@+id/sb_val_max" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginBottom="12dp" android:progress="255"/>
+
+        <!-- ══ Timing / Threshold ══════════════════════════════════════════════ -->
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="识别参数" android:textColor="#FFE082" android:textSize="16sp"
+            android:paddingBottom="6dp"/>
+
+        <TextView android:id="@+id/tv_interval" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:textColor="#CFD8DC" android:text="识别间隔(ms): 25"/>
+        <SeekBar android:id="@+id/sb_interval" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:progress="25"/>
+
+        <TextView android:id="@+id/tv_threshold" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:textColor="#CFD8DC" android:text="判定阈值(px): 10"/>
+        <SeekBar android:id="@+id/sb_threshold" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginBottom="16dp" android:progress="10"/>
+
+        <!-- ══ Action Buttons ══════════════════════════════════════════════════ -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:weightSum="2" android:layout_marginBottom="8dp">
+
+            <Button android:id="@+id/btn_calibrate"
+                android:layout_width="0dp" android:layout_weight="1"
+                android:layout_height="wrap_content" android:text="🔬 实时校准"
+                android:backgroundTint="#00695C" android:textColor="#fff"
+                android:layout_marginEnd="6dp"/>
+
+            <Button android:id="@+id/btn_save_config"
+                android:layout_width="0dp" android:layout_weight="1"
+                android:layout_height="wrap_content" android:text="💾 保存配置"
+                android:backgroundTint="#4527A0" android:textColor="#fff"/>
+        </LinearLayout>
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="⚠ 使用前请启用辅助功能服务 (设置→辅助功能→GreenBarBot)"
+            android:textColor="#FF8A65" android:textSize="12sp"
+            android:gravity="center" android:paddingBottom="16dp"/>
+
+    </LinearLayout>
+</ScrollView>
