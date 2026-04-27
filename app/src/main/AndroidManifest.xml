@@ -2,24 +2,24 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.greenbarbot">
 
-    <!-- ══ Permissions ══════════════════════════════════════════════════════ -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE"/>
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+    <!-- Android 14 必须显式声明 -->
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
     <application
         android:allowBackup="true"
         android:label="GreenBarBot"
         android:theme="@style/AppTheme"
-        android:supportsRtl="true">
+        android:supportsRtl="true"
+        android:hardwareAccelerated="true">
 
-        <!-- ══ Main Activity ════════════════════════════════════════════════ -->
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"
@@ -30,22 +30,23 @@
             </intent-filter>
         </activity>
 
-        <!-- ══ Calibration Activity ═════════════════════════════════════════ -->
         <activity android:name=".ui.CalibrationActivity" android:exported="false"/>
 
-        <!-- ══ Floating Window Service ══════════════════════════════════════ -->
+        <!-- Android 14: foregroundServiceType 必须精确匹配权限 -->
         <service
             android:name=".service.FloatingWindowService"
             android:exported="false"
-            android:foregroundServiceType="specialUse"/>
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="用于游戏辅助的悬浮窗服务"/>
+        </service>
 
-        <!-- ══ Screen Capture Service ════════════════════════════════════════ -->
         <service
             android:name=".service.ScreenCaptureService"
             android:exported="false"
             android:foregroundServiceType="mediaProjection"/>
 
-        <!-- ══ Accessibility Service ═════════════════════════════════════════ -->
         <service
             android:name=".vision.GreenBarAccessibilityService"
             android:exported="true"
